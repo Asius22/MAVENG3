@@ -1,5 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class DBConnector {
     private Connection connection;
@@ -7,15 +9,16 @@ public class DBConnector {
             DB_PWD = "123456sette",
             DB_URL = "jdbc:mysql://localhost/JDBC?",
             DB_CLASS = "com.mysql.cj.jdbc.Driver";
-    public DBConnector (){
+
+    public DBConnector() {
         createConnection();
     }
 
-    private Connection createConnection(){
-        try{
+    private Connection createConnection() {
+        try {
             Class.forName(DB_CLASS).getDeclaredConstructor().newInstance();
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return connection;
@@ -24,5 +27,13 @@ public class DBConnector {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void closeConnection() throws SQLException {
+        connection.close();
+    }
+
+    public PreparedStatement getPrepaaredStatement(String s) throws SQLException {
+        return connection.prepareStatement(s);
     }
 }
