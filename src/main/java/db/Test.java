@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Test {
     public static void main(String[] args) throws SQLException {
-        DBConnector connector = new DBConnector();
+        DBConnector connector = DBConnector.getIstance();
         try {
 
           /*  String query = "CREATE TABLE jdbc.fornitore (" +
@@ -27,7 +27,7 @@ public class Test {
                     "VALUES ('001', 'ladroni', 'Via ostense', 'roma'), " +
                     "('002', 'risparmietti', 'Viale marconi', 'Roma')";
 
-            PreparedStatement stat = connector.getPrepaaredStatement(insert1);
+            PreparedStatement stat = connector.getPreparedStatement(insert1);
             int res = stat.executeUpdate();
 
             System.out.println(
