@@ -3,13 +3,12 @@ import org.apache.log4j.xml.Log4jEntityResolver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Test {
-    public static void main(String[] args)  {
-        Connection conn;
+    public static void main(String[] args) throws SQLException {
+        DBConnector connector = new DBConnector();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/JDBC?", "root", "123456sette");
 
           /*  String query = "CREATE TABLE jdbc.fornitore (" +
                     "  `codiceFornitore` VARCHAR(20) NOT NULL," +
@@ -28,14 +27,18 @@ public class Test {
                     "VALUES ('001', 'ladroni', 'Via ostense', 'roma'), " +
                     "('002', 'risparmietti', 'Viale marconi', 'Roma')";
 
-            PreparedStatement stat = conn.prepareStatement(insert1);
+            PreparedStatement stat = connector.getPrepaaredStatement(insert1);
             int res = stat.executeUpdate();
 
             System.out.println(
                     (res > 0) ? "Inserimento completaato" : "qualcosa è andato storto"
             );
-        } catch (Exception e){
+
+            stat.close();
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            connector.closeConnection();
         }
     }
 }
