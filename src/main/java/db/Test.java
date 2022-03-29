@@ -1,7 +1,5 @@
-import org.apache.log4j.xml.Log4jEntityResolver;
+package db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -24,8 +22,8 @@ public class Test {
             );*/
 
             String insert1 = "INSERT INTO JDBC.FORNITORE (codiceFornitore, nome, indirizzo, citta)" +
-                    "VALUES ('001', 'ladroni', 'Via ostense', 'roma'), " +
-                    "('002', 'risparmietti', 'Viale marconi', 'Roma')";
+                    "VALUES ('003', 'ladroni', 'Via ostense', 'roma'), " +
+                    "('004', 'risparmietti', 'Viale marconi', 'Roma')";
 
             PreparedStatement stat = connector.getPreparedStatement(insert1);
             int res = stat.executeUpdate();

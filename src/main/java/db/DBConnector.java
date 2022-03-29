@@ -1,9 +1,12 @@
+package db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnector {
+    private static DBConnector connector;
     private static Connection connection;
     public static final String DB_USER = "root",
             DB_PWD = "123456sette",
@@ -12,24 +15,27 @@ public class DBConnector {
 
     private DBConnector() {
         createConnection();
+        connector = this;
     }
 
-    private Connection createConnection() {
-        try {
-            Class.forName(DB_CLASS).getDeclaredConstructor().newInstance();
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void createConnection() {
+        if (connection == null) {
+            try {
+                Class.forName(DB_CLASS).getDeclaredConstructor().newInstance();
+                connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return connection;
     }
 
-    public static DBConnector getIstance(){
-        if (connection == null)
-            return new DBConnector();
-        return this;
+    public static DBConnector getIstance() {
+        if (connector == null)
+            connector = new DBConnector();
+        return connector;
     }
-    public Connection getConnection() {
+
+    public static Connection getConnection() {
         return connection;
     }
 
