@@ -12,7 +12,7 @@ public class DBConnector {
     private static final String DB_USER = "db.username", DB_URL = "db.url", DB_PWD = "db.password", DB_CLASS = "db.class";
     private static DBConnector connector;
     private Connection connection;
-    private static Readproperties properties;
+    private Readproperties properties;
 
     private DBConnector() {
 
@@ -66,5 +66,9 @@ public class DBConnector {
 
     public Log getLog() {
         return l;
+    }
+
+    public Readproperties getReader(){
+        return properties;
     }
 }
