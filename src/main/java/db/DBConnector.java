@@ -12,16 +12,17 @@ public class DBConnector {
     private static final String DB_USER = "db.username", DB_URL = "db.url", DB_PWD = "db.password", DB_CLASS = "db.class";
     private static DBConnector connector;
     private Connection connection;
-    private Readproperties properties;
+    private static Readproperties properties;
 
     private DBConnector() {
-        createConnection();
+
         try {
             properties = new Readproperties();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             l.error(e.getMessage());
         }
+        createConnection();
         connector = this;
     }
 
@@ -45,8 +46,9 @@ public class DBConnector {
     }
 
     public static DBConnector getIstance() {
-        if (connector == null)
+        if (connector == null) {
             connector = new DBConnector();
+        }
         return connector;
     }
 
@@ -60,5 +62,9 @@ public class DBConnector {
 
     public PreparedStatement getPreparedStatement(String s) throws SQLException {
         return connection.prepareStatement(s);
+    }
+
+    public Log getLog() {
+        return l;
     }
 }
