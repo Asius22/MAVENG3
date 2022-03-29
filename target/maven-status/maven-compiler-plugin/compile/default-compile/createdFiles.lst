@@ -1,2 +1,3 @@
-DBConnector.class
-Test.class
+db\DBConnector.class
+db\Test.class
+db\Log.class
