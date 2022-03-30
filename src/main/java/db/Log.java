@@ -31,6 +31,7 @@ public class Log {
 
     public void info(String parameter){
         l.info(parameter);
+
     }
 
     public void debug(String parameter){
