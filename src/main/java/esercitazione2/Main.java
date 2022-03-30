@@ -29,7 +29,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         StatementThread esecuzione = null;
         String scelta = "";
-        while(!scelta.equals("exit")){
+        while (!scelta.equals("exit")) {
             System.out.println("Quale operazione vuoi effetuare?");
             scelta = scan.nextLine();
 
@@ -47,7 +47,7 @@ public class Main {
         esecuzione.closeAll();
     }
 
-    private static StatementThread insert(){
+    private static StatementThread insert() {
         String insertQuery = "INSERT INTO AUTO (marchio, nazione, fatturato, dipendenti) values (?,?,?,?)";
         String marchio, nazione;
         int fatturato, dipendenti;
@@ -65,18 +65,24 @@ public class Main {
         return new InsertThread(insertQuery, marchio, nazione, fatturato, dipendenti);
     }
 
-    private static StatementThread select(){
+    private static StatementThread select() {
         String uno = "SELECT nazione, sum(dipendenti) FROM AUTO GROUP BY nazione",
-        due = "SELECT marchio, fatturato FROM AUTO GROUP BY marchio ORDER BY fatturato DESC";
+                due = "SELECT marchio, fatturato FROM AUTO GROUP BY marchio ORDER BY fatturato DESC",
+                tre = "SELECT nazione, count(DISTINCT marchio) FROM AUTO GROUP BY nazione",
+                quattro = "SELECT nazione, sum(fatturato) FROM AUTO group by nazione ";
 
         String selected = "";
         Scanner scan = new Scanner(System.in);
         System.out.println("Quale select vuoi eseguire?");
-        System.out.println("1)dipendenti per nazione" +
-                "2) marchio e fatturato");
-        switch (scan.nextInt()){
+        System.out.println("1)dipendenti per nazione\n" +
+                "2) marchio e fatturato\n" +
+                "3) numero marchi per nazione\n" +
+                "4) fatturato per nazione\n");
+        switch (scan.nextInt()) {
             case 1 -> selected = uno;
-            case 2  -> selected = due;
+            case 2 -> selected = due;
+            case 3 -> selected = tre;
+            case 4 -> selected = quattro;
             default -> selected = "";
         }
         return new SelectThread(selected);
