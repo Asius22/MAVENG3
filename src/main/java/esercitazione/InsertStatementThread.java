@@ -28,6 +28,7 @@ public class InsertStatementThread extends StatementThread {
             e.printStackTrace();
         }
 
+        closeStat();
     }
 
     private void executeCreation() throws SQLException {
@@ -41,31 +42,38 @@ public class InsertStatementThread extends StatementThread {
     private void executeInsert() throws SQLException{
         Scanner scan = new Scanner(System.in);
 
-        L.info("Inserisci id");
-        stat.setInt(1, scan.nextInt());
-
         L.info("inserisci nome");
-        stat.setString(2, scan.next());
+        stat.setString(1, scan.next());
 
         L.info("inserisci cognome");
-        stat.setString(3, scan.next());
+        stat.setString(2, scan.next());
 
         L.info("inserisci eta");
-        stat.setInt(4, scan.nextInt());
+        stat.setInt(3, scan.nextInt());
 
         L.info("inserisci citta");
-        stat.setString(5, scan.next());
+        stat.setString(4, scan.next());
 
         L.info("inserisci provincia");
-        stat.setString(6, scan.next());
+        stat.setString(5, scan.next());
 
         L.info("inserisci cap");
-        stat.setInt(7, scan.nextInt());
+        stat.setInt(6, scan.nextInt());
 
         int res = stat.executeUpdate();
 
         L.info(
                 res > 0 ? "Inserimento effettuato" : "Errore inserimento"
         );
+    }
+
+
+    private void closeStat() {
+        try{
+            stat.close();
+        } catch (SQLException e){
+            L.error(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class Test {
     public static void main(String[] args) {
         String create = "CREATE TABLE IF NOT EXISTS ANAGRAFICA(" +
-                "id int not null, " +
+                "id int not null auto_increment, " +
                 "nome varchar(20) not null, " +
                 "cognome varchar(20) not null, " +
                 "eta int not null, " +
@@ -24,7 +24,7 @@ public class Test {
                 "cap int not null, " +
                 "primary key (id));";
 
-        String insert = "INSERT INTO ANAGRAFICA (id, nome, cognome, eta, citta, provincia, cap) values (?,?,?,?,?,?,?)";
+        String insert = "INSERT INTO ANAGRAFICA ( nome, cognome, eta, citta, provincia, cap) values (?,?,?,?,?,?)";
         String read = "SELECT * FROM ANAGRAFICA";
 
         DBConnector connector = DBConnector.getIstance();
@@ -45,11 +45,14 @@ public class Test {
             );
 
             creationThread.start();
-            //insertThread.start();
+            insertThread.start();
+            insertThread.join();
             readThread.start();
 
         } catch (SQLException e){
             connector.getLog().error(e.getMessage());
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 

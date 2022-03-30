@@ -31,5 +31,17 @@ public class SimpleStatementThread extends StatementThread{
             L.debug(e.getMessage() + " " + e.getErrorCode());
             e.printStackTrace();
         }
+
+        closeStat();
+
+    }
+
+    private void closeStat() {
+        try{
+            stat.close();
+        } catch (SQLException e){
+            L.error(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
