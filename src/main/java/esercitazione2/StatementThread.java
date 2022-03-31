@@ -1,6 +1,6 @@
 package esercitazione2;
 
-import db.DBConnector;
+import utils.DBConnector;
 import utils.Log;
 
 import java.sql.SQLException;

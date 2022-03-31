@@ -1,7 +1,5 @@
 package esercitazione2;
 
-import db.DBConnector;
-
 import java.sql.SQLException;
 import java.util.Scanner;
 

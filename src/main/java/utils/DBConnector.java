@@ -1,6 +1,4 @@
-package db;
-
-import utils.Log;
+package utils;
 
 import java.io.IOException;
 import java.sql.Connection;
