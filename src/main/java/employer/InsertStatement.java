@@ -20,7 +20,7 @@ public class InsertStatement extends AbstractStatement {
     }
 
     @Override
-    public void print(){
+    public void print() {
         getL().info(
                 (res > 0) ? "inserimento riuscito" : "inserimento non riuscito"
         );
@@ -34,7 +34,7 @@ public class InsertStatement extends AbstractStatement {
             getStatement().setString(1, employer.getName());
             getStatement().setString(2, employer.getLastName());
             res = getStatement().executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             getL().info(e.getMessage());
             e.printStackTrace();
         }

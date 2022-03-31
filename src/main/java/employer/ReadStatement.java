@@ -26,6 +26,7 @@ public class ReadStatement extends AbstractStatement{
                 str.append(
                         res.getString(i)
                 ).append("\t\t");
+            getL().info(str.toString());
         }
     }
 
