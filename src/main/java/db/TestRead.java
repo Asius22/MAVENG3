@@ -1,5 +1,7 @@
 package db;
 
+import utils.Log;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
