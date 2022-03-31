@@ -38,5 +38,6 @@ public class InsertThread extends StatementThread {
             L.error(e.getMessage() + e.getErrorCode());
             e.printStackTrace();
         }
+
     }
 }
