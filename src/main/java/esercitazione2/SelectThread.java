@@ -20,18 +20,24 @@ public class SelectThread extends StatementThread {
         try {
             PreparedStatement stat = connector.getPreparedStatement(query);
             ResultSet res = stat.executeQuery();
-            ResultSetMetaData md = res.getMetaData();
 
-            while (res.next()){
-                StringBuilder builder = new StringBuilder();
-                for (int i = 1; i <= md.getColumnCount(); i++ ){
-                    builder.append(res.getString(i)). append("\t");
-                }
-                L.info(builder.toString());
-            }
+            print(res);
+
+            stat.close();
         } catch (SQLException e) {
             L.error(e.getMessage() + e.getErrorCode());
             e.printStackTrace();
+        }
+    }
+
+    private void print(ResultSet res) throws SQLException {
+        ResultSetMetaData md = res.getMetaData();
+        while (res.next()) {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 1; i <= md.getColumnCount(); i++) {
+                builder.append(res.getString(i)).append("\t\t");
+            }
+            L.info(builder.toString());
         }
     }
 }
