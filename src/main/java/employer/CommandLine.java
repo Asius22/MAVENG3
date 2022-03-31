@@ -40,6 +40,7 @@ public class CommandLine {
                 "\n1) Crea" +
                 "\n2) leggi" +
                 "\n3) insert" +
+                "\n4) delete" +
                 "\n0) esci");
         choice = scan.nextInt();
     }
@@ -49,6 +50,8 @@ public class CommandLine {
         switch (choice) {
             case 1 -> statement = new CreateStatement();
             case 2 -> statement = new ReadStatement();
+            case 3 -> statement = new InsertStatement();
+            case 4 -> statement = new DeleteStatement()
         }
         execute();
     }
