@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
 public class InsertStatement extends AbstractStatement {
     private Employer employer;
     private int res;

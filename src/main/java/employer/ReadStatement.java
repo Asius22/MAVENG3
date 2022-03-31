@@ -20,13 +20,15 @@ public class ReadStatement extends AbstractStatement{
     @Override
     public void print() throws SQLException {
         ResultSetMetaData md = res.getMetaData();
-        StringBuilder str = new StringBuilder();
+        StringBuilder str;
         while (res.next()){
-            for (int i = 1; i < md.getColumnCount(); i++)
+            str = new StringBuilder();
+            for (int i = 1; i <= md.getColumnCount(); i++)
                 str.append(
                         res.getString(i)
                 ).append("\t\t");
             getL().info(str.toString());
+
         }
     }
 
@@ -34,6 +36,7 @@ public class ReadStatement extends AbstractStatement{
     public void run() {
         try {
             res = getStatement().executeQuery();
+            print();
         } catch (SQLException e) {
             getL().error(e.getMessage());
             e.printStackTrace();
