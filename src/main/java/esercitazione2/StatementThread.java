@@ -1,9 +1,8 @@
 package esercitazione2;
 
 import db.DBConnector;
-import db.Log;
+import utils.Log;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public abstract class StatementThread implements Runnable {

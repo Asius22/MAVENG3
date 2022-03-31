@@ -1,6 +1,6 @@
 package thread;
 
-import db.Log;
+import utils.Log;
 
 public class ThreadRunnerPrinter extends Thread{
     private int min, max;

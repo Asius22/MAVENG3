@@ -1,11 +1,11 @@
 package db;
 
+import utils.Log;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Scanner;
 
 /**
  * prodotto
@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class Readproperties {
     private static final Log l = Log.getInstance();
-    private static final String resourceName = "application.properties";
+    private String resourceNam;
     private Properties prop;
     private InputStream input;
     private ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -24,13 +24,18 @@ public class Readproperties {
      * @param prop
      * @param input
      */
-    public Readproperties(Properties prop, InputStream input) {
+    public Readproperties(Properties prop, InputStream input, String resourceName) {
         this.prop = prop;
         this.input = input;
-
+        this.resourceNam = resourceName;
     }
 
     public Readproperties() throws IOException {
+        init();
+    }
+
+    public Readproperties(String resourceNam) throws IOException {
+        this.resourceNam = resourceNam;
         init();
     }
 
@@ -41,7 +46,7 @@ public class Readproperties {
     public void init() throws IOException{
         this.prop = new Properties();
         input = new FileInputStream(
-                "src\\main\\resources\\" + resourceName
+                "src\\main\\resources\\" + ((this.resourceNam == null) ? "application.properties" : this.resourceNam)
         );
         this.prop.load(input);
     }

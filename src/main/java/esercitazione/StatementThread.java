@@ -1,9 +1,8 @@
 package esercitazione;
 
-import db.Log;
+import utils.Log;
 
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 
 public abstract class StatementThread implements Runnable{
     protected PreparedStatement stat;

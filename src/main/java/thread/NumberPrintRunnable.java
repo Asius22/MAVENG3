@@ -1,6 +1,6 @@
 package thread;
 
-import db.Log;
+import utils.Log;
 
 public class NumberPrintRunnable implements Runnable{
 
