@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InsertThread extends StatementThread {
-    private  String marchio, nazione;
+    private String marchio, nazione;
     private int fatturato, dipendenti;
+
     public InsertThread(String s, String marchio, String nazione, int fatturato, int dipendenti) {
         super(s);
         this.marchio = marchio;
