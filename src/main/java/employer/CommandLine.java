@@ -51,7 +51,7 @@ public class CommandLine {
             case 1 -> statement = new CreateStatement();
             case 2 -> statement = new ReadStatement();
             case 3 -> statement = new InsertStatement();
-            case 4 -> statement = new DeleteStatement()
+            case 4 -> statement = new DeleteStatement();
         }
         execute();
     }
