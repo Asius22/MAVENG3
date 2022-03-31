@@ -20,7 +20,7 @@ public abstract class AbstractStatement implements Runnable{
         reader = new Readproperties("employer.properties");
     }
 
-    public abstract void print();
+    public abstract void print() throws SQLException;
 
     public void close() throws SQLException {
         connector.closeConnection();
