@@ -3,8 +3,9 @@ package esercitazione2;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeleteThread extends StatementThread{
+public class DeleteThread extends StatementThread {
     private int id;
+
     public DeleteThread(String s, int id) {
         super(s);
         this.id = id;
@@ -18,7 +19,7 @@ public class DeleteThread extends StatementThread{
         }
         try {
             PreparedStatement stat = connector.getPreparedStatement(query);
-            stat.setInt(1,id);
+            stat.setInt(1, id);
             int res = stat.executeUpdate();
 
             L.info(
