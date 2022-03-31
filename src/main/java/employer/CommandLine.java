@@ -21,13 +21,14 @@ public class CommandLine {
     private Scanner scan;
     private Log l = Log.getInstance();
     private AbstractStatement statement;
+
     public CommandLine() throws IOException {
         scan = new Scanner(System.in);
         choice = -1;
     }
 
     @Logger("start")
-    public void start() {
+    public void start() throws SQLException, IOException{
         while (choice != 0) {
             chiediScelta();
             elaboraScelta();
@@ -38,24 +39,26 @@ public class CommandLine {
         l.info("Cosa vuoi fare? " +
                 "\n1) Crea" +
                 "\n2) leggi" +
+                "\n3) insert" +
                 "\n0) esci");
         choice = scan.nextInt();
     }
+
     @Logger("elaboro...")
-    private void elaboraScelta(){
-        switch(choice){
-            case 1 -> createTable();
+    private void elaboraScelta() throws SQLException, IOException {
+        switch (choice) {
+            case 1 -> statement = new CreateStatement();
+            case 2 -> statement = new ReadStatement();
         }
+        execute();
     }
 
-    private void createTable(){
-
+    private void execute() {
         try {
-            statement = new CreateStatement();
             Thread t = new Thread(statement);
             t.start();
             t.join();
-        } catch (SQLException | IOException | InterruptedException e){
+        } catch (InterruptedException e) {
             l.error(e.getMessage());
             e.printStackTrace();
         }
