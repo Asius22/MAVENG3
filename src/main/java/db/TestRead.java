@@ -1,5 +1,6 @@
 package db;
 
+import utils.DBConnector;
 import utils.Log;
 
 import java.sql.PreparedStatement;

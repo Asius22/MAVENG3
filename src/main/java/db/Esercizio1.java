@@ -1,5 +1,7 @@
 package db;
 
+import utils.DBConnector;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

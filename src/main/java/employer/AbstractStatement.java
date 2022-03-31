@@ -1,7 +1,7 @@
 package employer;
 
-import db.DBConnector;
-import db.Readproperties;
+import utils.DBConnector;
+import utils.Readproperties;
 import lombok.Data;
 import utils.Log;
 
