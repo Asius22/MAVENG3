@@ -1,10 +1,11 @@
 package olympics;
 
+import lombok.Builder;
 import lombok.Data;
-import java.util.Calendar;
+import lombok.RequiredArgsConstructor;
 import java.sql.Date;
 
-@Data
+@Data @RequiredArgsConstructor @Builder
 public class Athlete {
     private int code;
     private String name, nation;
