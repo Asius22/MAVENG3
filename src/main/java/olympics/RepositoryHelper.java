@@ -13,8 +13,8 @@ public class RepositoryHelper implements BaseRepository<Athlete> {
     private Connection conn;
 
     public RepositoryHelper() {
-        String create = "CREATE TABLE IF EXISTS ATHLETE(" +
-                "code int not null auto increment, " +
+        String create = "CREATE TABLE IF NOT EXISTS ATHLETE(" +
+                "code int not null auto_increment, " +
                 "name varchar(20) not null, " +
                 "birthdate date not null, " +
                 "nation varchar(40) not null, " +
@@ -88,7 +88,7 @@ public class RepositoryHelper implements BaseRepository<Athlete> {
     @Override
     public void update(Athlete obj) {
         String update = "update athlete set " +
-                "name = ?, nation = ? , birthdate = ?, height = ?) " +
+                "name = ?, nation = ? , birthdate = ?, height = ? " +
                 "where code = ?";
 
         try {

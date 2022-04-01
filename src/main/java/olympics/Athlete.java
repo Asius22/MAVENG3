@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import java.sql.Date;
 
-@Data @RequiredArgsConstructor @Builder
+@Data @Builder
 public class Athlete {
     private int code;
     private String name, nation;
