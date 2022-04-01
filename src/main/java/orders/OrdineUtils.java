@@ -62,7 +62,7 @@ public class OrdineUtils implements EntityMethods<Ordine>{
         et = em.getTransaction();
         et.begin();
 
-        TypedQuery<Ordine> q = em.createQuery("select o from Ordine o where o.id = :pk", Ordine.class);
+        TypedQuery<Ordine> q = em.createQuery("select o from Ordine o where o.id = " + pk, Ordine.class);
         l.info(q.getSingleResult().toString());
         et.commit();
     }
@@ -72,7 +72,7 @@ public class OrdineUtils implements EntityMethods<Ordine>{
         et = em.getTransaction();
         et.begin();
 
-        TypedQuery<Ordine> q = em.createQuery("select o from Ordine o where o.persona.id = :fk", Ordine.class);
+        TypedQuery<Ordine> q = em.createQuery("select o from Ordine o where o.persona.id = " + fk, Ordine.class);
         print(q.getResultList());
         et.commit();
     }

@@ -68,7 +68,7 @@ public class PersonaUtils implements EntityMethods<Persona> {
         et = em.getTransaction();
         et.begin();
 
-        TypedQuery<Persona> q = em.createQuery("select p from Persona p where p.id = :pk", Persona.class);
+        TypedQuery<Persona> q = em.createQuery("select p from Persona p where p.id = " +pk, Persona.class);
         l.info(q.getSingleResult().toString());
         et.commit();
     }
