@@ -1,15 +1,13 @@
 package olympics;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Date;
+import java.util.Calendar;
+import java.sql.Date;
 
 @Data
 public class Athlete {
     private int code;
     private String name, nation;
-    private double height;
+    private float height;
     private Date birthdate;
 }
