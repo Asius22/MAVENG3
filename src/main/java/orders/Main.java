@@ -15,9 +15,11 @@ public class Main {
 
         Ordine o = new Ordine();
         OrdineUtils ou = new OrdineUtils();
-        p.setId(3);
+       /* p.setId(3);
         o.setPersona(p);
         ou.persist(o);
-        ou.findAll();
+        ou.findAll();*/
+
+        ou.findByForeignKey(3);
     }
 }
