@@ -8,6 +8,8 @@
         <description>JPA-Example</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>olympicsJPA.Athlete</class>
+        <class>orders.Ordine</class>
+        <class>orders.Persona</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
