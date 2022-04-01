@@ -72,4 +72,9 @@ public class PersonaUtils implements EntityMethods<Persona> {
         l.info(q.getSingleResult().toString());
         et.commit();
     }
+
+    @Override
+    public void findByForeignKey(int fk){
+       l.info("persona non ha chievi secondarie");
+    }
 }

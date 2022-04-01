@@ -1,15 +1,14 @@
 package orders;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Ordine {
     @Id
     @Column(name = "orderId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
+
     @OneToOne
     @JoinColumn(name = "personID")
     private Persona persona;

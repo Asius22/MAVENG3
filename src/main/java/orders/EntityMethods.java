@@ -11,4 +11,5 @@ public interface EntityMethods<T> {
 
     void findByPk(int pk);
 
+    void findByForeignKey(int fk);
 }

@@ -67,6 +67,15 @@ public class OrdineUtils implements EntityMethods<Ordine>{
         et.commit();
     }
 
+    @Override
+    public void findByForeignKey(int fk){
+        et = em.getTransaction();
+        et.begin();
+
+        TypedQuery<Ordine> q = em.createQuery("select o from Ordine o where o.persona.id = :fk", Ordine.class);
+        print(q.getResultList());
+        et.commit();
+    }
     private void print(List<Ordine> res){
         for (Ordine o: res)
             l.info(o.toString());
