@@ -1,13 +1,31 @@
 package orders;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Ordine {
-    @Id
+    @Id @Column(name = "orderId")
     private int id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "personID")
-    private Ordine personID;
+    private Persona persona;
 
+    public Ordine(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 }
