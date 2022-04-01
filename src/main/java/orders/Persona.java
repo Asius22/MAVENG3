@@ -7,6 +7,7 @@ import java.util.List;
 public class Persona {
     @Id
     @Column(name = "personID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name", length = 20)
@@ -18,7 +19,8 @@ public class Persona {
     @OneToMany
     private List<Ordine> ordini;
 
-    public Persona(){}
+    public Persona() {
+    }
 
     public int getId() {
         return id;
