@@ -11,8 +11,10 @@ public class Test {
         a.setNation("Francia");
         a.setBirthdate(new Date(2000,1,17));
         System.out.println(a);
-        //br.persist(a);
-        a.setCode(8);
+        br.persist(a);
+        br.findAll();
+
+        a.setNation("Indiaa");
         br.update(a);
         br.findAll();
 
