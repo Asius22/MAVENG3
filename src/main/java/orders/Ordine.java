@@ -32,4 +32,10 @@ public class Ordine {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+
+    @Override
+    public String toString() {
+        return id + "\t\t" +
+                persona + ';';
+    }
 }

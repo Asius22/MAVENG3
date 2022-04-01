@@ -53,4 +53,12 @@ public class Persona {
     public void setOrdini(List<Ordine> ordini) {
         this.ordini = ordini;
     }
+
+    @Override
+    public String toString() {
+        return id + "\t\t" +
+                this.name + "\t\t" +
+                this.lastName + "\t\t" +
+                this.ordini + ";";
+    }
 }
