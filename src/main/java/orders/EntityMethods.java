@@ -11,5 +11,4 @@ public interface EntityMethods<T> {
 
     void findByPk(int pk);
 
-    void findByH(float height);
 }
