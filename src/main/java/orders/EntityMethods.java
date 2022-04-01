@@ -1,6 +1,15 @@
 package orders;
 
-public class EntityMethods<T> {
+public interface EntityMethods<T> {
     void persist(T obj);
-    void update (t obj)
+
+    void delete(T obj);
+
+    void update(T obj);
+
+    void findAll();
+
+    void findByPk(int pk);
+
+    void findByH(float height);
 }
