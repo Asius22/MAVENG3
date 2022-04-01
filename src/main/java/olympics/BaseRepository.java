@@ -6,5 +6,5 @@ public interface BaseRepository<T>{
     void update(T obj);
     void findAll();
     void findByPk(int pk);
-    void findByH(double height);
+    void findByH(float height);
 }
